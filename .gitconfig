@@ -1,0 +1,11 @@
+[user]
+	name = Nikita Semenov
+	email = nasemenov726@gmail.com
+[alias]
+	lg = log --oneline --decorate --graph --all
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[init]
+	defaultBranch = main
