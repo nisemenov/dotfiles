@@ -1,0 +1,11 @@
+name: work 
+root: ~/Dev
+
+
+windows:
+  - work:
+      layout: tailed 
+      panes:
+        - 
+        - 
+        -  
