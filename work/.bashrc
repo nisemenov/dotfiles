@@ -91,7 +91,10 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias p3='python3'
+
+#aliases
+alias p='python'
+alias md='mkdir'
 alias venvact='source venv/bin/activate'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -118,7 +121,18 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export PATH=/home/nisemenov/.local/bin:/home/nisemenov/.pyenv/shims:/home/nisemenov/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/Docker/host/bin:/mnt/c/Users/Никита/AppData/Local/Microsoft/WindowsApps:/snap/bin
+
+# some features for git
 . ~/git-completion.bash
 . ~/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\w$(__git_ps1 " (%s)")\$ '
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

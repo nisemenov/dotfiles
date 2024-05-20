@@ -1,0 +1,32 @@
+name: work 
+root: ~/
+
+
+windows:
+  - wisdom:
+      root: /mnt/c/Users/Никита/Dev/wisdom/wisdom_backend_app
+      layout: tailed 
+      panes:
+        - poetry shell 
+        - 1
+          - poetry shell
+          - p manage.py runserver 8005
+        - poetry shell 
+        - poetry shell 
+  - wisdom_dev:
+      layout: 'be7b,209x51,0,0[209x24,0,0,7,209x26,0,25{104x26,0,25,9,104x26,105,25,8}]' 
+      panes:
+        - 1:
+          - sshpass -f ~/.wisdompass ssh dev_user@10.1.1.249 -p 5252
+          - cd /home/dev_user/AN-Wisdom-develop2/wisdom/ 
+          - docker logs -f wisdom-backend-dev
+        - 2:
+          - sshpass -f ~/.wisdompass ssh dev_user@10.1.1.249 -p 5252
+          - cd /home/dev_user/AN-Wisdom-develop2/wisdom/ 
+        - 3:
+          - sshpass -f ~/.wisdompass ssh dev_user@10.1.1.249 -p 5252
+          - cd /home/dev_user/AN-Wisdom-develop2/wisdom/wisdom_backend_app/ 
+  - wisdom_front: 
+      root: /mnt/c/Users/Никита/Dev/wisdom/wisdom_frontend_2/app
+      panes:
+        - npm run local
