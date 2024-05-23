@@ -27,7 +27,7 @@ windows:
           - ssh -i ~/.ssh/id_rsa_dev_wisdom dev_user@10.1.1.249 -p 5252
           - cd /home/dev_user/AN-Wisdom-develop2/wisdom/ 
         - 3:
-          - sshpass -f ~/.wisdompass ssh dev_user@10.1.1.249 -p 5252
+          - ssh -i ~/.ssh/id_rsa_dev_wisdom dev_user@10.1.1.249 -p 5252
           - cd /home/dev_user/AN-Wisdom-develop2/wisdom/wisdom_backend_app/ 
   - wisdom_front: 
       root: /mnt/c/Users/Никита/Dev/wisdom/wisdom_frontend_2/app
