@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  dev-postgres:
+    image: postgres:13.4
+    container_name: dev-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=hTx647!df
+      - POSTGRES_DB=dev
+    ports:
+      - 5444:5444
+    restart: always 
+    volumes:
+      - ./data/dev-postgres:/var/lib/postgresql/data
+    command: -p 5444
+    networks:
+      - main
+
+  dev-adminer:
+    image: adminer
+    container_name: dev-adminer
+    restart: always
+    ports:
+      - "8089:8080"
+    networks:
+      - main
+
+  dev-minio:
+    container_name: dev-minio
+    image: minio/minio
+    command: minio server --console-address ":9001" /data
+    environment:
+      - MINIO_ROOT_USER=minio
+      - MINIO_ROOT_PASSWORD=minio123
+    restart: always 
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./data/minio:/data
+    networks:
+      - main
+
+networks:
+  main:
+    driver: bridge
