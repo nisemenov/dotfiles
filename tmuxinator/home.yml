@@ -1,0 +1,23 @@
+name: home 
+root: ~/
+
+
+windows:
+  - funnyalexander:
+      root: ~/Dev/pets/funnyalexander
+      layout: tailed 
+      panes:
+        - 1:
+          - venvact 
+        - 2:
+          - venvact 
+        - 3:
+          - venvact 
+        - 4:
+          - venvact 
+  - obsidian:
+      root: /mnt/c/Users/Никита/Documents/obsidian
+      layout: tailed 
+      panes:
+        - 
+        - 
