@@ -95,7 +95,14 @@ alias l='ls -CF'
 #aliases
 alias p='python'
 alias md='mkdir'
-alias venvact='source venv/bin/activate'
+alias venvact='source .venv/bin/activate'
+
+#alembic
+#alias al='bash /home/nisemenov/Dev/portal/backend/alembic_rev.sh'
+function al() {
+	alembic revision -m "$1" --autogenerate
+}
+alias alup='alembic upgrade head'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -121,11 +128,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# for pyenv
+#export PYENV_ROOT="$HOME/.pyenv"
+#command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
 
-export PATH=/home/nisemenov/.local/bin:/home/nisemenov/.pyenv/shims:/home/nisemenov/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/Docker/host/bin:/mnt/c/Users/Никита/AppData/Local/Microsoft/WindowsApps:/snap/bin
+export PATH=/home/nisemenov/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/Docker/host/bin:/mnt/c/Users/Никита/AppData/Local/Microsoft/WindowsApps:/snap/bin
 
 # some features for git
 . ~/git-completion.bash

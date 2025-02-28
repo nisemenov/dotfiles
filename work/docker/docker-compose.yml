@@ -1,44 +1,53 @@
-version: "3.9"
-
 services:
-  dev-postgres:
-    image: postgres:13.4
-    container_name: dev-postgres
+  postgres:
+    image: postgres:17.0
+    container_name: postgres
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=hTx647!df
-      - POSTGRES_DB=dev
+      - POSTGRES_PASSWORD=postgres
     ports:
-      - 5444:5444
+      - 5432:5432
     restart: always 
     volumes:
-      - ./data/dev-postgres:/var/lib/postgresql/data
-    command: -p 5444
+      - ./data/postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -h localhost -p 5432 -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - main
 
-  dev-adminer:
-    image: adminer
-    container_name: dev-adminer
+  adminer:
+    image: adminer:4.8.1
+    container_name: adminer
     restart: always
     ports:
       - "8089:8080"
     networks:
       - main
 
-  dev-minio:
-    container_name: dev-minio
+  minio:
+    container_name: minio
     image: minio/minio
     command: minio server --console-address ":9001" /data
-    environment:
-      - MINIO_ROOT_USER=minio
-      - MINIO_ROOT_PASSWORD=minio123
     restart: always 
     ports:
       - "9000:9000"
       - "9001:9001"
     volumes:
-      - ./data/minio:/data
+      - ./data/minio_data:/data
+    networks:
+      - main
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis_data:/data
     networks:
       - main
 

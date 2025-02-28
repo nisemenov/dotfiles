@@ -5,24 +5,20 @@ root: ~/
 windows:
   - portal:
       root: ~/Dev/work/portal
-      layout: tailed 
+      layout: 'cc4e,209x57,0,0[209x28,0,0{104x28,0,0,1,104x28,105,0,5},209x28,0,29{67x28,0,29,6,70x28,68,29,13,70x28,139,29,7}]' 
       panes:
         - 1:
-          - poetry shell 
+          - cd backend
+          - venvact 
         - 2:
-          - poetry shell
+          - cd backend
+          - venvact 
         - 3:
-          - poetry shell 
-        - 4:
-          - poetry shell 
-  - ans_main_tg_bot :
-      root: ~/Dev/work/ans_main_tg_bot
-      layout: tailed 
-      panes:
-        - 1:
-          - poetry shell 
-        - 2:
-          - poetry shell
+          - cd backend
+          - venvact 
+          - uvicorn app:app --reload
+        -
+        -
   - portal_dev_new:
       layout: 'be7b,209x51,0,0[209x24,0,0,7,209x26,0,25{104x26,0,25,9,104x26,105,25,8}]' 
       panes:
@@ -35,6 +31,14 @@ windows:
         - 3:
           - ssh -i ~/.ssh/id_rsa_dev_portal_new portal@10.1.1.27
           - cd portal
+  - ans_main_tg_bot :
+      root: ~/Dev/work/ans_main_tg_bot
+      layout: tailed 
+      panes:
+        - 1:
+          - poetry shell 
+        - 2:
+          - poetry shell
             #  - wisdom:
             #      root: /mnt/c/Users/Никита/Dev/wisdom/wisdom_backend_app
             #      layout: tailed 
