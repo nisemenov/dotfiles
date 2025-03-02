@@ -1,0 +1,10 @@
+name: pets 
+root: ~/Dev/pets/
+
+
+windows:
+  - funnyalexander:
+      root: ./funnyalexander
+      panes:
+        - venvact 
+        - venvact 
