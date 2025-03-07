@@ -5,20 +5,22 @@ root: ~/
 windows:
   - portal:
       root: ~/Dev/work/portal
-      layout: 'cc4e,209x57,0,0[209x28,0,0{104x28,0,0,1,104x28,105,0,5},209x28,0,29{67x28,0,29,6,70x28,68,29,13,70x28,139,29,7}]' 
+      layout: 'd55b,188x46,0,0[188x37,0,0{112x37,0,0,1,75x37,113,0,5},188x8,0,38{101x8,0,38,6,86x8,102,38,7}]' 
       panes:
+        - 0:
+          - cd backend
+          - venvact 
+          - nvim .
         - 1:
           - cd backend
           - venvact 
         - 2:
           - cd backend
           - venvact 
+          - uvicorn app:app --reload
         - 3:
           - cd backend
           - venvact 
-          - uvicorn app:app --reload
-        -
-        -
   - portal_dev_new:
       layout: 'be7b,209x51,0,0[209x24,0,0,7,209x26,0,25{104x26,0,25,9,104x26,105,25,8}]' 
       panes:
