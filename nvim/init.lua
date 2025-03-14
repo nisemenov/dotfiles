@@ -1,5 +1,5 @@
--- Basic settings
-vim.opt.mouse = "a"
+-- basic settings
+vim.opt.mouse = "c"
 vim.opt.clipboard = "unnamedplus" -- поддержка clipboard
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -27,8 +27,8 @@ vim.g.loaded_netrwPlugin = 1
 -- Common keymaps
 vim.keymap.set("n", "H", "gT", { noremap = true, silent = true })
 vim.keymap.set("n", "L", "gt", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-j>", "10j", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-k>", "10k", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-j>", "7j", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-k>", "7k", { noremap = true, silent = true })
 vim.keymap.set("n", ",<Space>", ":nohlsearch<CR>", { noremap = true, silent = true })
 -- Telescope
 vim.keymap.set("n", ",f", ":Telescope find_files<CR>", { noremap = true })
@@ -90,6 +90,18 @@ require("lazy").setup({
             --     ignore = false,
             -- },
             on_attach = my_on_attach,
+        },
+    },
+    {
+        'numToStr/Comment.nvim',
+        opts = {
+            padding = true,
+            toggler = {
+                line = ',cc',  -- Закомментировать строку (вместо 'gcc')
+            },
+            opleader = {
+                line = ',c',   -- Закомментировать строки в визуальном режиме (вместо 'gc')
+            },
         },
     },
     { "folke/tokyonight.nvim", lazy = false, priority = 1000, config = function() vim.cmd("colorscheme tokyonight") end },
