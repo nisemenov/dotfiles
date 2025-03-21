@@ -12,6 +12,14 @@ vim.opt.softtabstop = 4 -- Spaces instead of one tab
 vim.opt.shiftwidth = 4 -- Spaces for auto indent
 vim.opt.expandtab = true -- Replace tab with spaces
 vim.opt.autoindent = true -- Save indent on new line
+vim.opt.autoread = true
+
+vim.api.nvim_create_autocmd({"FocusGained", "BufEnter", "CursorHold"}, {
+  pattern = "*",
+  command = "checktime",
+  desc = "Check for file changes on focus, buffer enter, or cursor hold",
+})
+
 -- splitting
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -30,6 +38,7 @@ vim.keymap.set("n", "L", "gt", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", "7j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "7k", { noremap = true, silent = true })
 vim.keymap.set("n", ",<Space>", ":nohlsearch<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", ",r", ":checktime<CR>", { noremap = true, silent = true })
 -- Telescope
 vim.keymap.set("n", ",f", ":Telescope find_files<CR>", { noremap = true })
 vim.keymap.set("n", ",g", ":Telescope live_grep<CR>", { noremap = true })
@@ -90,6 +99,13 @@ require("lazy").setup({
             --     ignore = false,
             -- },
             on_attach = my_on_attach,
+            update_focused_file = {
+                enable = true,           -- Автоматически обновлять дерево при фокусе на файле
+                update_root = true,      -- Обновлять корень дерева
+            },
+            filesystem_watchers = {
+                enable = true,           -- Включить наблюдение за файловой системой
+            },
         },
     },
     {
