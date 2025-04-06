@@ -3,7 +3,7 @@ source $VIMRUNTIME/defaults.vim
 
 " basic settings
 set mouse=c
-set clipboard+=unnamedplus
+"set clipboard+=unnamedplus
 set nu
 set relativenumber 
 set noic
@@ -15,6 +15,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
+
 "splitting
 set splitbelow
 set splitright
