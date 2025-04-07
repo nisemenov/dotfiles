@@ -94,6 +94,7 @@ alias l='ls -CF'
 
 #aliases
 alias p='python'
+alias n='nvim'
 alias md='mkdir'
 alias venvact='source .venv/bin/activate'
 
@@ -144,3 +145,4 @@ export PS1='\w$(__git_ps1 " (%s)")\$ '
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH=$PATH:$HOME/.local/bin

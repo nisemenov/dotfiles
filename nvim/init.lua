@@ -133,6 +133,17 @@ require("telescope").load_extension("fzf")
 local lspconfig = require("lspconfig")
 lspconfig.pyright.setup {}
 
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = "●", -- Символ перед текстом ошибки
+        source = "always", -- Показывать источник ошибки (например, pyright)
+    },
+    signs = true, -- Включить знаки слева (например, "E")
+    underline = true, -- Подчеркивать проблемный код
+    update_in_insert = false, -- Не обновлять диагностику во время ввода
+    severity_sort = true, -- Сортировать по уровню серьезности
+})
+
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap=true, silent=true })
 vim.keymap.set("n", "gd", function()
     vim.cmd("split")
