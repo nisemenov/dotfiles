@@ -4,7 +4,7 @@
 	sw = switch
 	br = branch
 	ci = commit
-	st = status -sbu
+    st = status -sbu
 	cp = cherry-pick
 	cpn = "!f() { git cherry-pick -n $1 && git commit -m \"cp [$1] $(git log --format=%B -n 1 $1 | head -n 1)\"; }; f"
 	fe = fetch -v
