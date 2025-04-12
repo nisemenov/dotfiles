@@ -32,3 +32,8 @@ nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
 nnoremap ,<Space> :nohlsearch<CR>
+
+" Для нормального режима
+" nnoremap y "+y
+" Для визуального режима
+" vnoremap y "+y

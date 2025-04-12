@@ -5,7 +5,7 @@ root: ~/
 windows:
   - telewish:
       root: ~/Dev/pets/telewish
-      layout: tailed 
+      layout: a966,160x50,0,0[160x39,0,0{104x39,0,0,1,55x39,105,0,4},160x10,0,40{79x10,0,40,5,80x10,80,40,6}] 
       panes:
         - 1:
           - venvact 

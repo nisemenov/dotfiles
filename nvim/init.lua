@@ -1,11 +1,11 @@
 -- basic settings
 vim.opt.mouse = "c"
-vim.opt.clipboard = "unnamedplus" -- поддержка clipboard
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.ignorecase = false
 vim.opt.hlsearch = true
 vim.opt.swapfile = false
+vim.opt.clipboard = "unnamedplus" -- поддержка clipboard
 vim.opt.termguicolors = true
 vim.opt.tabstop = 4 -- Spaces instead of one tab
 vim.opt.softtabstop = 4 -- Spaces instead of one tab

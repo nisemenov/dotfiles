@@ -4,6 +4,7 @@ alias venvact='source .venv/bin/activate'
 alias md='mkdir'
 alias opte='open -a 'textedit''
 alias obsidian='./Documents/obsidian/weekly_notes.sh'
+alias n="nvim"
 
 # git
 autoload -Uz compinit && compinit
