@@ -82,6 +82,7 @@ require("lazy").setup({
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", lazy = false },
+    { "windwp/nvim-ts-autotag" },
     { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "Pocco81/auto-save.nvim", config = function() require("auto-save").setup() end },
@@ -162,12 +163,31 @@ cmp.setup({
     },
     sources = {
         { name = "nvim_lsp" },
+        { name = "buffer" },
     },
 })
 
 -- Treesitter
-require("nvim-treesitter.configs").setup({
-    ensure_installed = { "python", "lua", "json", "yaml" },
-    highlight = { enable = true },
-})
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "python", "lua", "json", "yaml", "html", "htmldjango" },
+    highlight = {
+        enable = true,
+    },
+}
 
+require('nvim-ts-autotag').setup({
+  opts = {
+    -- Defaults
+    enable_close = true, -- Auto close tags
+    enable_rename = true, -- Auto rename pairs of tags
+    enable_close_on_slash = false -- Auto close on trailing </
+  },
+  -- Also override individual filetype configs, these take priority.
+  -- Empty by default, useful if one of the "opts" global settings
+  -- doesn't work well in a specific filetype
+  -- per_filetype = {
+  --   ["html"] = {
+  --     enable_close = false
+  --   }
+  -- }
+})
