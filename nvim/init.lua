@@ -130,6 +130,17 @@ require("lazy").setup({
 })
 require("telescope").load_extension("fzf")
 
+require("telescope").setup({
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-s>"] = require("telescope.actions").smart_send_to_qflist
+                   + require("telescope.actions").open_qflist,
+      },
+    },
+  },
+})
+
 -- LSP
 local lspconfig = require("lspconfig")
 lspconfig.pyright.setup {}

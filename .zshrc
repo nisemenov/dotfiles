@@ -5,6 +5,7 @@ alias md='mkdir'
 alias opte='open -a 'textedit''
 alias obsidian='./Documents/obsidian/weekly_notes.sh'
 alias n="nvim"
+alias redock="~/Dev/docker_init.sh"
 
 # git
 autoload -Uz compinit && compinit

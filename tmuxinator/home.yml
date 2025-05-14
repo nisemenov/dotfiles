@@ -1,40 +1,46 @@
 name: home 
 root: ~/
 
-
 windows:
-  - telewish:
-      root: ~/Dev/pets/telewish
-      layout: 7faf,160x50,0,0[160x39,0,0{104x39,0,0,1,55x39,105,0,4},160x10,0,40{79x10,0,40,5,80x10,80,40[80x5,80,40,6,80x4,80,46,12]}]
+  - django:
+      root: ~/Dev/pets/yourmirror/
+      layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
+      panes:
+        - 1:
+          - venvact
+          - n backend
+        - 2:
+          - cd backend
+        - 3:
+          - cd backend
+          - make run-server
+        - 4:
+          - cd backend
+  - link_preview:
+      root: ~/Dev/pets/yourmirror/
+      layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
+      panes:
+        - 1:
+          - venvact
+          - n services/link_preview
+        - 2:
+          - cd services/link_preview
+        - 3:
+          - cd services/link_preview
+          - make run-server
+        - 4:
+          - cd services/link_preview
+  - root:
+      root: ~/Dev/pets/yourmirror/
+      layout: b786,151x46,0,0[151x37,0,0{99x37,0,0,3,51x37,100,0[51x28,100,0,10,51x8,100,29,15]},151x8,0,38{74x8,0,38,11,76x8,75,38,12}]
       panes:
         - 1:
           - venvact
           - n .
         - 2:
-          - venvact
         - 3:
-          - venvact
-          - p manage.py runserver
+          - make tailwind-start
         - 4:
-          - venvact
+          - make psql
         - 5:
-          - venvact
-          - p manage.py tailwind start
-  - funnyalexander:
-      root: ~/Dev/pets/funnyalexander
-      layout: tailed 
-      panes:
-        - 1:
-          - venvact 
-        - 2:
-          - venvact 
-        - 3:
-          - venvact 
-        - 4:
-          - venvact 
-  - obsidian:
-      root: /mnt/c/Users/Никита/Documents/obsidian
-      layout: tailed 
-      panes:
-        - 
-        - 
+          - make minio
