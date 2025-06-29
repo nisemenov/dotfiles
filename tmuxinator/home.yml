@@ -32,15 +32,18 @@ windows:
           - cd services/link_preview
   - root:
       root: ~/Dev/pets/yourmirror/
-      layout: b786,151x46,0,0[151x37,0,0{99x37,0,0,3,51x37,100,0[51x28,100,0,10,51x8,100,29,15]},151x8,0,38{74x8,0,38,11,76x8,75,38,12}]
+      layout: 1311,151x46,0,0[151x37,0,0{99x37,0,0,3,51x37,100,0[51x14,100,0,10,51x13,100,15,15,51x8,100,29,11]},151x8,0,38{74x8,0,38,12,76x8,75,38,13}]
       panes:
         - 1:
           - venvact
           - n .
         - 2:
         - 3:
-          - make tailwind-start
+          - cd backend
+          - make celery-start
         - 4:
-          - make psql
+          - make tailwind-start
         - 5:
+          - make psql
+        - 6:
           - make minio
