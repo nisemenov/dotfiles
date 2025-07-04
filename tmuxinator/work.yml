@@ -3,77 +3,31 @@ root: ~/
 
 
 windows:
-  - portal:
-      root: ~/Dev/work/portal
-      layout: 'd55b,188x46,0,0[188x37,0,0{112x37,0,0,1,75x37,113,0,5},188x8,0,38{101x8,0,38,6,86x8,102,38,7}]' 
+  - sender_sms_2.0:
+      root: ~/Dev/work/sender_sms_2.0
+      layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
       panes:
         - 0:
-          - cd backend
-          - venvact 
+          - venvact
           - nvim .
-        - 1:
-          - cd backend
-          - venvact 
         - 2:
-          - cd backend
-          - venvact 
-          - uvicorn app:app --reload
+          - cd app
         - 3:
-          - cd backend
-          - venvact 
-  - portal_dev_new:
-      layout: 'be7b,209x51,0,0[209x24,0,0,7,209x26,0,25{104x26,0,25,9,104x26,105,25,8}]' 
+          - cd app
+          - make run-server
+        - 4:
+          - cd app
+  - links_payment_debtor:
+      root: ~/Dev/work/links_payment_debtor
+      layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
       panes:
-        - 1:
-          - ssh -i ~/.ssh/id_rsa_dev_portal_new portal@10.1.1.27
-          - docker logs -f portal-backend-dev
+        - 0:
+          - venvact
+          - nvim .
         - 2:
-          - ssh -i ~/.ssh/id_rsa_dev_portal_new portal@10.1.1.27
-          - cd portal
+          - cd app
         - 3:
-          - ssh -i ~/.ssh/id_rsa_dev_portal_new portal@10.1.1.27
-          - cd portal
-  - ans_main_tg_bot :
-      root: ~/Dev/work/ans_main_tg_bot
-      layout: tailed 
-      panes:
-        - 1:
-          - poetry shell 
-        - 2:
-          - poetry shell
-            #  - wisdom:
-            #      root: /mnt/c/Users/Никита/Dev/wisdom/wisdom_backend_app
-            #      layout: tailed 
-            #      panes:
-            #        - 1:
-            #          - poetry shell 
-            #        - 2:
-            #          - poetry shell
-            #        - 3:
-            #          - poetry shell 
-            #          - p manage.py runserver 8005
-            #        - 4:
-            #          - poetry shell 
-            #  - wisdom_dev:
-            #      layout: 'be7b,209x51,0,0[209x24,0,0,7,209x26,0,25{104x26,0,25,9,104x26,105,25,8}]' 
-            #      panes:
-            #        - 1:
-            #          - ssh -i ~/.ssh/id_rsa_dev_wisdom dev_user@10.1.1.249 -p 5252
-            #          - cd /home/dev_user/AN-Wisdom-develop2/wisdom/ 
-            #          - docker logs -f wisdom-backend-dev
-            #        - 2:
-            #          - ssh -i ~/.ssh/id_rsa_dev_wisdom dev_user@10.1.1.249 -p 5252
-            #          - cd /home/dev_user/AN-Wisdom-develop2/wisdom/ 
-            #        - 3:
-            #          - ssh -i ~/.ssh/id_rsa_dev_wisdom dev_user@10.1.1.249 -p 5252
-            #          - cd /home/dev_user/AN-Wisdom-develop2/wisdom/wisdom_backend_app/ 
-            #  - wisdom_front: 
-            #      root: /mnt/c/Users/Никита/Dev/wisdom/wisdom_frontend_2/app
-            #      panes:
-            #        - npm run local
-  - obsidian:
-      root: /mnt/c/Users/Никита/Documents/obsidian_work
-      layout: tailed 
-      panes:
-        - 
-        - 
+          - cd app
+          - make run-server
+        - 4:
+          - cd app

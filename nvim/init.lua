@@ -67,7 +67,6 @@ vim.opt.rtp:prepend(lazypath)
 -- функция удаление дефолтного маппинга <C-K> с сохранением остальных дефолтных значений для nvim-tree
 local function my_on_attach(bufnr)
     local api = require("nvim-tree.api")
-
     local function opts(desc)
         return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
     end
