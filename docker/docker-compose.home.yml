@@ -14,6 +14,20 @@ services:
     networks:
       - main
 
+  # vertica:
+  #   image: vertica/vertica-ce
+  #   container_name: vertica
+  #   environment:
+  #     TZ: "Europe/Moscow"
+  #   ports:
+  #     - "5433:5433"
+  #     - "5444:5444"
+  #   volumes:
+  #     - ./data/vertica:/data
+  #   networks:
+  #     - main
+  #   restart: unless-stopped
+
   # adminer:
   #   image: adminer:4.8.1
   #   container_name: adminer
