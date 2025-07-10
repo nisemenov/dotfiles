@@ -39,6 +39,7 @@ vim.keymap.set("n", "<C-j>", "7j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "7k", { noremap = true, silent = true })
 vim.keymap.set("n", ",<Space>", ":nohlsearch<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", ",r", ":checktime<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", ",v", "<C-v>", { noremap = true, silent = true })
 -- Telescope
 vim.keymap.set("n", ",f", ":Telescope find_files<CR>", { noremap = true })
 vim.keymap.set("n", ",g", ":Telescope live_grep<CR>", { noremap = true })

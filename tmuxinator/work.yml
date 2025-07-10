@@ -1,11 +1,36 @@
-name: work 
+name: work
 root: ~/
 
-
 windows:
-  - sender_sms_2.0:
-      root: ~/Dev/work/sender_sms_2.0
-      layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
+  - LCA_email_sender:
+      root: ~/Dev/work/LCA_email_sender
+      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+      panes:
+        - 0:
+          - venvact
+          - nvim .
+        - 2:
+          - cd app
+        - 3:
+          - make run-server
+        - 4:
+          - cd app
+  - sender_sms_2:
+      root: ~/Dev/work/sender_sms_2
+      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+      panes:
+        - 0:
+          - venvact
+          - nvim .
+        - 2:
+          - cd app
+        - 3:
+          - make run-server
+        - 4:
+          - cd app
+  - links_payment_debtor:
+      root: ~/Dev/work/links_payment_debtor
+      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
       panes:
         - 0:
           - venvact
@@ -17,9 +42,9 @@ windows:
           - make run-server
         - 4:
           - cd app
-  - links_payment_debtor:
-      root: ~/Dev/work/links_payment_debtor
-      layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
+  - sender_sms:
+      root: ~/Dev/work/sender_sms
+      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
       panes:
         - 0:
           - venvact
@@ -27,7 +52,6 @@ windows:
         - 2:
           - cd app
         - 3:
-          - cd app
           - make run-server
         - 4:
           - cd app

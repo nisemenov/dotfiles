@@ -32,3 +32,4 @@ nnoremap <C-j> 10j
 nnoremap <C-k> 10k
 
 nnoremap ,<Space> :nohlsearch<CR>
+nnoremap ,v <C-v>

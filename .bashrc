@@ -97,7 +97,7 @@ alias p='python'
 alias n='nvim'
 alias md='mkdir'
 alias venvact='source .venv/bin/activate'
-alias redock='/home/nisemenov/Dev/docker/init.sh'
+alias redock="~/Dev/docker/docker_init.sh"
 
 #alembic
 #alias al='bash /home/nisemenov/Dev/portal/backend/alembic_rev.sh'

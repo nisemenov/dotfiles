@@ -2,7 +2,7 @@
 
 set -e  # остановка при ошибке
 
-cd ~/Dev || exit 1
+cd ~/Dev/docker || exit 1
 
 docker compose -f docker-compose.yml down
 docker compose -f docker-compose.yml build

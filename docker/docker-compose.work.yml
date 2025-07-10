@@ -1,0 +1,68 @@
+services:
+  postgres:
+    image: postgres:17.0
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    networks:
+      - main
+#
+#   adminer:
+#     image: adminer:4.8.1
+#     container_name: adminer
+#     restart: always
+#     ports:
+#       - "8080:8080"
+#     networks:
+#       - main
+#
+#   minio:
+#     container_name: minio
+#     image: minio/minio
+#     command: minio server --address ":9000" --console-address ":9001" /data
+#     environment:
+#       - MINIO_ROOT_USER=minio
+#       - MINIO_ROOT_PASSWORD=passforminio
+#     restart: always 
+#     ports:
+#       - "9000:9000"
+#       - "9001:9001"
+#     volumes:
+#       - ./data/minio:/data
+#     networks:
+#       - main
+#
+#   redis:
+#     image: redis:latest
+#     container_name: redis
+#     restart: always
+#     ports:
+#       - "6379:6379"
+#     volumes:
+#       - ./data/redis:/data
+#     networks:
+#       - main
+#
+#   # celery-yourmirror:
+#   #   build:
+#   #     context: ./pets/yourmirror
+#   #     dockerfile: backend/Dockerfile
+#   #   container_name: celery-yourmirror
+#   #   command: [ "celery", "-A", "yourmirror", "worker", "-l", "info" ]
+#   #   env_file: .env.yourmirror
+#   #   volumes:
+#   #     - ./pets/yourmirror/backend:/app
+#   #   depends_on:
+#   #     - redis
+#   #     - postgres
+#   #   networks:
+#   #     - main
+#
+networks:
+  main:
+    driver: bridge
