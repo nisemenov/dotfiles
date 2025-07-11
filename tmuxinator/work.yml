@@ -2,19 +2,19 @@ name: work
 root: ~/
 
 windows:
-  - LCA_email_sender:
-      root: ~/Dev/work/LCA_email_sender
+  - lca_email_sender:
+      root: ~/Dev/work/lca_email_sender
       layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
       panes:
         - 0:
           - venvact
           - nvim .
         - 2:
-          - cd app
+          -
         - 3:
           - make run-server
         - 4:
-          - cd app
+          - make vsql
   - sender_sms_2:
       root: ~/Dev/work/sender_sms_2
       layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
