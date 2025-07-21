@@ -98,6 +98,7 @@ alias n='nvim'
 alias md='mkdir'
 alias venvact='source .venv/bin/activate'
 alias redock="~/Dev/docker/docker_init.sh"
+alias ltmux="tmux select-layout 'b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]'"
 
 #alembic
 #alias al='bash /home/nisemenov/Dev/portal/backend/alembic_rev.sh'

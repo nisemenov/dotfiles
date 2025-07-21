@@ -50,7 +50,7 @@ vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = t
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
     callback = function()
-        vim.opt.colorcolumn = "88"
+        vim.opt.colorcolumn = "120"
     end
 })
 
