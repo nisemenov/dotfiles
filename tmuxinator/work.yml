@@ -4,19 +4,25 @@ root: ~/
 windows:
   - lca_email_sender:
       root: ~/Dev/work/lca_email_sender
-      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+      layout: 96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]
       panes:
         - 0:
           - venvact
           - nvim .
-        - 2:
+        - 1:
           -
+        - 2:
+          - uv run taskiq worker app.services.mail_king.broker:broker -fsd -r
         - 3:
-          - make run-server
+          - uv run taskiq scheduler app.services.mail_king.broker:scheduler -fsd --skip-first-run
         - 4:
+          - make run-server
+        - 5:
+          - make psql
+        - 6:
           - make vsql
-  - sender_sms_2:
-      root: ~/Dev/work/sender_sms_2
+  - payment_yookassa:
+      root: ~/Dev/work/payment_yookassa
       layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
       panes:
         - 0:
@@ -25,6 +31,7 @@ windows:
         - 2:
           - cd app
         - 3:
+          - cd app
           - make run-server
         - 4:
           - cd app
@@ -39,6 +46,19 @@ windows:
           - cd app
         - 3:
           - cd app
+          - make run-server
+        - 4:
+          - cd app
+  - sender_sms_2:
+      root: ~/Dev/work/sender_sms_2
+      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+      panes:
+        - 0:
+          - venvact
+          - nvim .
+        - 2:
+          - cd app
+        - 3:
           - make run-server
         - 4:
           - cd app

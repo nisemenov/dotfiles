@@ -98,14 +98,14 @@ alias n='nvim'
 alias md='mkdir'
 alias venvact='source .venv/bin/activate'
 alias redock="~/Dev/docker/docker_init.sh"
-alias ltmux="tmux select-layout 'b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]'"
+alias ltmux="tmux select-layout '96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]'"
 
 #alembic
 #alias al='bash /home/nisemenov/Dev/portal/backend/alembic_rev.sh'
-function al() {
-	alembic revision -m "$1" --autogenerate
-}
-alias alup='alembic upgrade head'
+# function al() {
+# 	alembic revision -m "$1" --autogenerate
+# }
+# alias alup='alembic upgrade head'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

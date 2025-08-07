@@ -26,6 +26,37 @@ services:
       - main
     restart: unless-stopped
 
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/data
+    networks:
+      - main
+
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: securepassword
+    ports:
+      - "5672:5672"    # AMQP порт для taskiq-aio-pika
+      - "15672:15672"  # Веб-интерфейс
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq
+    networks:
+      - main
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 #   adminer:
 #     image: adminer:4.8.1
 #     container_name: adminer
@@ -48,17 +79,6 @@ services:
 #       - "9001:9001"
 #     volumes:
 #       - ./data/minio:/data
-#     networks:
-#       - main
-#
-#   redis:
-#     image: redis:latest
-#     container_name: redis
-#     restart: always
-#     ports:
-#       - "6379:6379"
-#     volumes:
-#       - ./data/redis:/data
 #     networks:
 #       - main
 #
