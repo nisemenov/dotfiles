@@ -12,9 +12,9 @@ windows:
         - 1:
           -
         - 2:
-          - uv run taskiq worker app.services.mail_king.broker:broker -fsd -r
+          - uv run taskiq worker app.tkq.workers:mk_broker -fsd -r
         - 3:
-          - uv run taskiq scheduler app.services.mail_king.broker:scheduler -fsd --skip-first-run
+          - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
         - 4:
           - make run-server
         - 5:
@@ -22,19 +22,18 @@ windows:
         - 6:
           - make vsql
   - payment_yookassa:
-      root: ~/Dev/work/payment_yookassa
+      root: ~/Dev/work/payment_yookassa/backend
       layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
       panes:
         - 0:
           - venvact
           - nvim .
+        - 1:
+          -
         - 2:
-          - cd app
-        - 3:
-          - cd app
           - make run-server
-        - 4:
-          - cd app
+        - 3:
+          - make psql
   - links_payment_debtor:
       root: ~/Dev/work/links_payment_debtor
       layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
