@@ -2,6 +2,19 @@ name: work
 root: ~/
 
 windows:
+  # - lca_clear_name:
+  #     root: ~/Dev/work/lca_clear_name
+  #     layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+  #     panes:
+  #       - 0:
+  #         - venvact
+  #         - nvim .
+  #       - 1:
+  #         -
+  #       - 2:
+  #         - make run-server
+  #       - 3:
+  #         - make psql
   - lca_email_sender:
       root: ~/Dev/work/lca_email_sender
       layout: 96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]
@@ -21,6 +34,21 @@ windows:
           - make psql
         - 6:
           - make vsql
+  - lca_email_sender_server:
+      root: ~/Dev/work/lca_email_sender
+      layout: 1a1f,188x51,0,0{94x51,0,0[94x25,0,0,27,94x25,0,26,30],93x51,95,0[93x25,95,0,28,93x25,95,26,29]}
+      panes:
+        - 0:
+          - ssh -i ~/.ssh/id_rsa_email_hosting_server user@10.100.30.64 -p 22
+          - docker logs e-sender-app-dev -f
+        - 1:
+          - ssh -i ~/.ssh/id_rsa_email_hosting_server user@10.100.30.64 -p 22
+          - docker logs e-sender-tkq-worker-dev -f
+        - 2:
+          - ssh -i ~/.ssh/id_rsa_email_hosting_server user@10.100.30.64 -p 22
+          - docker logs e-sender-tkq-scheduler-dev -f
+        - 3:
+          - ssh -i ~/.ssh/id_rsa_email_hosting_server user@10.100.30.64 -p 22
   - payment_yookassa:
       root: ~/Dev/work/payment_yookassa/backend
       layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
@@ -34,43 +62,43 @@ windows:
           - make run-server
         - 3:
           - make psql
-  - links_payment_debtor:
-      root: ~/Dev/work/links_payment_debtor
-      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
-      panes:
-        - 0:
-          - venvact
-          - nvim .
-        - 2:
-          - cd app
-        - 3:
-          - cd app
-          - make run-server
-        - 4:
-          - cd app
-  - sender_sms_2:
-      root: ~/Dev/work/sender_sms_2
-      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
-      panes:
-        - 0:
-          - venvact
-          - nvim .
-        - 2:
-          - cd app
-        - 3:
-          - make run-server
-        - 4:
-          - cd app
-  - sender_sms:
-      root: ~/Dev/work/sender_sms
-      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
-      panes:
-        - 0:
-          - venvact
-          - nvim .
-        - 2:
-          - cd app
-        - 3:
-          - make run-server
-        - 4:
-          - cd app
+  # - links_payment_debtor:
+  #     root: ~/Dev/work/links_payment_debtor
+  #     layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+  #     panes:
+  #       - 0:
+  #         - venvact
+  #         - nvim .
+  #       - 2:
+  #         - cd app
+  #       - 3:
+  #         - cd app
+  #         - make run-server
+  #       - 4:
+  #         - cd app
+  # - sender_sms_2:
+  #     root: ~/Dev/work/sender_sms_2
+  #     layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+  #     panes:
+  #       - 0:
+  #         - venvact
+  #         - nvim .
+  #       - 2:
+  #         - cd app
+  #       - 3:
+  #         - make run-server
+  #       - 4:
+  #         - cd app
+  # - sender_sms:
+  #     root: ~/Dev/work/sender_sms
+  #     layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+  #     panes:
+  #       - 0:
+  #         - venvact
+  #         - nvim .
+  #       - 2:
+  #         - cd app
+  #       - 3:
+  #         - make run-server
+  #       - 4:
+  #         - cd app

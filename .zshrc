@@ -1,11 +1,11 @@
 alias ll='ls -lha'
-alias p=python
-alias venvact='source .venv/bin/activate'
 alias md='mkdir'
-alias opte='open -a 'textedit''
-alias obsidian='./Documents/obsidian/weekly_notes.sh'
 alias n="nvim"
+alias obsidian='./Documents/obsidian/weekly_notes.sh'
+alias opte='open -a 'textedit''
+alias p=python
 alias redock="~/Dev/docker_init.sh"
+alias venvact='source .venv/bin/activate'
 
 # git
 autoload -Uz compinit && compinit
