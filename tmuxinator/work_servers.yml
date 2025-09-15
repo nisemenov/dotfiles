@@ -1,0 +1,77 @@
+name: work_servers
+root: ~/
+
+windows:
+  - email_sender_s:
+      layout: 1d2d,188x51,0,0[188x40,0,0{124x40,0,0,2,63x40,125,0[63x20,125,0,28,63x19,125,21,29]},188x10,0,41{79x10,0,41,21,54x10,80,41,25,53x10,135,41,27}]
+      panes:
+        - 0:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - cd Dev/lca_email_sender
+        - 1:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - cd Dev/lca_email_sender
+          - make psql-prod
+        - 2:
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+        - 3:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - cd Dev/lca_email_sender
+          - docker logs e-sender-app -f
+        - 4:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - docker logs e-sender-tkq-worker -f
+        - 5:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - docker logs e-sender-tkq-scheduler -f
+  - payment_yookassa_s:
+      layout: 1d2d,188x51,0,0[188x40,0,0{124x40,0,0,2,63x40,125,0[63x20,125,0,28,63x19,125,21,29]},188x10,0,41{79x10,0,41,21,54x10,80,41,25,53x10,135,41,27}]
+      panes:
+        - 0:
+          - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
+          - cd payment_yookassa
+        - 1:
+          - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
+          - cd payment_yookassa
+          - make psql-prod
+        - 2:
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+        - 3:
+          - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
+          - docker logs payment-yookassa-app -f
+        - 4:
+          - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
+          - docker logs payment-yookassa-tkq-worker -f
+        - 5:
+          - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
+          - docker logs payment-yookassa-tkq-scheduler -f
+  - sms_sender_s:
+      layout: b982,188x51,0,0[188x40,0,0{128x40,0,0,3,59x40,129,0,15},188x10,0,41{93x10,0,41,16,94x10,94,41,17}]
+      panes:
+        - 0:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - cd sms_sender
+        - 1:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - cd sms_sender
+          - make psql-prod
+        - 2:
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+        - 3:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - docker logs sms-sender-app -f
+  - links_payment_debtor_s:
+      layout: b982,188x51,0,0[188x40,0,0{128x40,0,0,3,59x40,129,0,15},188x10,0,41{93x10,0,41,16,94x10,94,41,17}]
+      panes:
+        - 0:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - cd sms_sender
+        - 1:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - cd sms_sender
+          - make psql-prod
+        - 2:
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+        - 3:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - docker logs sms-sender-app -f
