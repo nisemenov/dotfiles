@@ -22,18 +22,30 @@ windows:
         - 6:
           - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
   - payment_yookassa:
-      root: ~/Dev/work/payment_yookassa/backend
-      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+      root: ~/Dev/work/payment_yookassa
+      layout: 96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]
       panes:
         - 0:
+          - cd backend
           - venvact
-          - nvim .
+          - nvim ..
         - 1:
           -
         - 2:
-          - make run-server
+          - cd backend
+          - uv run taskiq worker app.tkq.workers:mk_broker -fsd -r
         - 3:
+          - cd backend
+          - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+        - 4:
+          - cd backend
+          - make run-server
+        - 5:
+          - cd backend
           - make psql
+        - 6:
+          - cd frontend
+          - npm run dev
   - sms_sender:
       root: ~/Dev/work/lca_sms_sender
       layout: 9cfb,188x51,0,0[188x45,0,0{128x45,0,0,3,59x45,129,0,15},188x5,0,46{93x5,0,46,16,47x5,94,46,17,46x5,142,46,24}]
@@ -49,17 +61,17 @@ windows:
           - make psql
         - 4:
           - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
-  - links_payment_debtor:
-      root: ~/Dev/work/links_payment_debtor
-      layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
-      panes:
-        - 0:
-          - venvact
-          - nvim .
-        - 2:
-          - cd app
-        - 3:
-          - cd app
-          - make run-server
-        - 4:
-          - cd app
+  # - links_payment_debtor:
+  #     root: ~/Dev/work/links_payment_debtor
+  #     layout: b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]
+  #     panes:
+  #       - 0:
+  #         - venvact
+  #         - nvim .
+  #       - 2:
+  #         - cd app
+  #       - 3:
+  #         - cd app
+  #         - make run-server
+  #       - 4:
+  #         - cd app
