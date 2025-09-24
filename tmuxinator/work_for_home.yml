@@ -1,0 +1,59 @@
+name: work_for_home
+root: ~/
+
+windows:
+  - email_sender:
+      root: ~/Dev/work/lca/lca_email_sender
+      layout: 83fe,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x22,110,0,10,41x14,110,23,11]},151x8,0,38{80x8,0,38,13,35x8,81,38,14,34x8,117,38,15}]
+      panes:
+        - 0:
+          - venvact
+          - nvim .
+        - 1:
+          -
+        - 2:
+          - make psql-local
+        - 3:
+          - make run-server
+        - 4:
+          - uv run taskiq worker app.tkq.workers:mk_broker -fsd -r
+        - 5:
+          - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+  - payment_yookassa:
+      root: ~/Dev/work/lca/payment_yookassa
+      layout: c1a6,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x17,110,0,9,41x9,110,18,10,41x9,110,28,11]},151x8,0,38{80x8,0,38,12,35x8,81,38,13,34x8,117,38,14}]
+      panes:
+        - 0:
+          - cd backend
+          - venvact
+          - nvim ..
+        - 1:
+          - cd backend
+        - 2:
+          - cd backend
+          - uv run taskiq worker app.tkq.workers:mk_broker -fsd -r
+        - 3:
+          - cd backend
+          - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+        - 4:
+          - cd backend
+          - make run-server
+        - 5:
+          - cd backend
+          - make psql
+        - 6:
+          - cd frontend
+          - npm run dev
+  - sms_sender:
+      root: ~/Dev/work/lca/lca_sms_sender
+      layout: 383b,151x46,0,0[151x37,0,0{109x37,0,0,3,41x37,110,0,16},151x8,0,38{91x8,0,38,17,59x8,92,38,19}]
+      panes:
+        - 0:
+          - venvact
+          - nvim .
+        - 1:
+          -
+        - 2:
+          - make run-server
+        - 3:
+          - make psql

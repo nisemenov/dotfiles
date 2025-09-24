@@ -64,6 +64,26 @@ services:
     networks:
       - main
 
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: securepassword
+    ports:
+      - "5672:5672"    # AMQP порт для taskiq-aio-pika
+      - "15672:15672"  # Веб-интерфейс
+    volumes:
+      - ./data/rabbitmq:/var/lib/rabbitmq
+    networks:
+      - main
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
   # celery-yourmirror:
   #   build:
   #     context: ./pets/yourmirror
