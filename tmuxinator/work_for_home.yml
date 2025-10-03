@@ -16,32 +16,32 @@ windows:
         - 3:
           - make run-server
         - 4:
-          - uv run taskiq worker app.tkq.workers:mk_broker -fsd -r
+          - uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 5:
           - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
   - payment_yookassa:
       root: ~/Dev/work/lca/payment_yookassa
-      layout: c1a6,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x17,110,0,9,41x9,110,18,10,41x9,110,28,11]},151x8,0,38{80x8,0,38,12,35x8,81,38,13,34x8,117,38,14}]
+      layout: c2ac,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x17,110,0,9,41x9,110,18,10,41x9,110,28,11]},151x8,0,38{40x8,0,38,12,39x8,41,38,19,35x8,81,38,13,34x8,117,38,14}]
       panes:
         - 0:
-          - cd backend
           - venvact
-          - nvim ..
+          - nvim .
         - 1:
           - cd backend
         - 2:
-          - cd backend
-          - uv run taskiq worker app.tkq.workers:mk_broker -fsd -r
+          - cd bot
         - 3:
-          - cd backend
-          - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+          - make psql
         - 4:
           - cd backend
           - make run-server
         - 5:
           - cd backend
-          - make psql
+          - make tkq-worker
         - 6:
+          - cd backend
+          - make tkq-scheduler
+        - 7:
           - cd frontend
           - npm run dev
   - sms_sender:

@@ -14,12 +14,6 @@ vim.opt.expandtab = true -- Replace tab with spaces
 vim.opt.autoindent = true -- Save indent on new line
 vim.opt.autoread = true
 
-vim.api.nvim_create_autocmd({"FocusGained", "BufEnter", "CursorHold"}, {
-  pattern = "*",
-  command = "checktime",
-  desc = "Check for file changes on focus, buffer enter, or cursor hold",
-})
-
 -- splitting
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -38,7 +32,6 @@ vim.keymap.set("n", "L", "gt", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", "7j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "7k", { noremap = true, silent = true })
 vim.keymap.set("n", ",<Space>", ":nohlsearch<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", ",r", ":checktime<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", ",v", "<C-v>", { noremap = true, silent = true })
 -- Telescope
 vim.keymap.set("n", ",f", ":Telescope find_files<CR>", { noremap = true })

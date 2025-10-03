@@ -1,7 +1,7 @@
 alias ll='ls -lha'
 alias md='mkdir'
 alias n="nvim"
-alias obsidian='./Documents/obsidian/weekly_notes.sh'
+alias obsidian='~/Documents/obsidian/weekly_notes.sh'
 alias opte='open -a 'textedit''
 alias p=python
 alias redock="~/Dev/docker_init.sh"

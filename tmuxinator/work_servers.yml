@@ -13,7 +13,7 @@ windows:
           - cd Dev/lca_email_sender
           - make psql-prod
         - 2:
-          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
           - cd Dev/lca_email_sender
@@ -34,16 +34,16 @@ windows:
           - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
           - docker exec -it py-postgres psql -U postgres -d lca_payment_yookassa
         - 2:
-          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
           - docker logs -f py-backend
         - 4:
           - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
-          - docker logs payment-yookassa-tkq-worker -f
+          - docker logs py-tkq-worker -f
         - 5:
           - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
-          - docker logs payment-yookassa-tkq-scheduler -f
+          - docker logs py-tkq-scheduler -f
   - sms_sender_s:
       layout: b982,188x51,0,0[188x40,0,0{128x40,0,0,3,59x40,129,0,15},188x10,0,41{93x10,0,41,16,94x10,94,41,17}]
       panes:
@@ -58,7 +58,7 @@ windows:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
           - docker logs lca_sms_sender-web-1 -f
         - 3:
-          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
   # - links_payment_debtor_s:
   #     layout: b982,188x51,0,0[188x40,0,0{128x40,0,0,3,59x40,129,0,15},188x10,0,41{93x10,0,41,16,94x10,94,41,17}]
   #     panes:
@@ -70,7 +70,7 @@ windows:
   #         - cd sms_sender
   #         - make psql-prod
   #       - 2:
-  #         - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+  #         - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
   #       - 3:
   #         - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
   #         - docker logs sms-sender-app -f
