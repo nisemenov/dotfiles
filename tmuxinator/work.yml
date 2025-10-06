@@ -12,38 +12,38 @@ windows:
         - 1:
           -
         - 2:
-          - uv run taskiq worker app.tkq.workers:mk_broker -fsd -r
+          - make psql-local
         - 3:
-          - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
         - 4:
           - make run-server
         - 5:
-          - make psql-local
+          - uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 6:
-          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U n_semenov
+          - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
   - payment_yookassa:
       root: ~/Dev/work/payment_yookassa
-      layout: 96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]
+      layout: c2ac,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x17,110,0,9,41x9,110,18,10,41x9,110,28,11]},151x8,0,38{40x8,0,38,12,39x8,41,38,19,35x8,81,38,13,34x8,117,38,14}]
       panes:
         - 0:
-          - cd backend
           - venvact
-          - nvim ..
+          - nvim .
         - 1:
-          -
+          - cd backend
         - 2:
-          - cd backend
-          - uv run taskiq worker app.tkq.workers:mk_broker -fsd -r
+          - cd bot
         - 3:
-          - cd backend
-          - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+          - make psql
         - 4:
           - cd backend
           - make run-server
         - 5:
           - cd backend
-          - make psql
+          - make tkq-worker
         - 6:
+          - cd backend
+          - make tkq-scheduler
+        - 7:
           - cd frontend
           - npm run dev
   - sms_sender:

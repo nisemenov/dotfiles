@@ -93,14 +93,16 @@ alias la='ls -A'
 alias l='ls -CF'
 
 #aliases
-alias etmux="tmux select-layout '96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]'"
 alias md='mkdir'
 alias n='nvim'
-alias obsidian='~/obsidian_weekly_notes_wsl.sh'
 alias p='python'
-alias redock="~/Dev/docker/docker_init.sh"
 alias venvact='source .venv/bin/activate'
-alias ytmux="tmux select-layout 'b757,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0,3},188x5,0,46{93x5,0,46,4,94x5,94,46,5}]'"
+
+alias obsidian='~/obsidian_weekly_notes_wsl.sh'
+
+alias redock="~/Dev/docker/docker_init.sh"
+alias etmux="tmux select-layout '96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]'"
+alias ytmux="tmux select-layout 'c2ac,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x17,110,0,9,41x9,110,18,10,41x9,110,28,11]},151x8,0,38{40x8,0,38,12,39x8,41,38,19,35x8,81,38,13,34x8,117,38,14}]'"
 
 #alembic
 #alias al='bash /home/nisemenov/Dev/portal/backend/alembic_rev.sh'
