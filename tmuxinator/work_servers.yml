@@ -59,18 +59,25 @@ windows:
           - docker logs lca_sms_sender-web-1 -f
         - 3:
           - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
-  # - links_payment_debtor_s:
-  #     layout: b982,188x51,0,0[188x40,0,0{128x40,0,0,3,59x40,129,0,15},188x10,0,41{93x10,0,41,16,94x10,94,41,17}]
-  #     panes:
-  #       - 0:
-  #         - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-  #         - cd sms_sender
-  #       - 1:
-  #         - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-  #         - cd sms_sender
-  #         - make psql-prod
-  #       - 2:
-  #         - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
-  #       - 3:
-  #         - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-  #         - docker logs sms-sender-app -f
+  - vertica_export_s:
+      layout: cc37,151x46,0,0[151x38,0,0{105x38,0,0,4,45x38,106,0,22},151x7,0,39{60x7,0,39,23,45x7,61,39,24,44x7,107,39,25}]
+      panes:
+        - 0:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - cd Dev/lca_vertica_export
+        - 1:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - cd Dev/lca_vertica_export
+          - docker exec -it vert-ex-postgres psql -d lca_vertica_export -U postgres
+        - 2:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - cd Dev/lca_vertica_export
+          - docker logs -f vert-ex-app
+        - 3:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - cd Dev/lca_vertica_export
+          - docker logs -f vert-ex-tkq-worker
+        - 3:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - cd Dev/lca_vertica_export
+          - docker logs -f vert-ex-tkq-scheduler

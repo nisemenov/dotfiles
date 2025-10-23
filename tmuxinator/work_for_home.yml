@@ -24,13 +24,15 @@ windows:
       layout: c2ac,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x17,110,0,9,41x9,110,18,10,41x9,110,28,11]},151x8,0,38{40x8,0,38,12,39x8,41,38,19,35x8,81,38,13,34x8,117,38,14}]
       panes:
         - 0:
+          - cd backend
           - venvact
-          - nvim .
+          - nvim ..
         - 1:
           - cd backend
         - 2:
           - cd bot
         - 3:
+          - cd backend
           - make psql
         - 4:
           - cd backend
@@ -63,7 +65,7 @@ windows:
           - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
   - vertica_export:
       root: ~/Dev/work/lca/lca_vertica_export
-      layout: e29e,151x46,0,0[151x38,0,0{105x38,0,0,4,45x38,106,0,22},151x7,0,39{75x7,0,39,23,75x7,76,39,24}]
+      layout: cc37,151x46,0,0[151x38,0,0{105x38,0,0,4,45x38,106,0,22},151x7,0,39{60x7,0,39,23,45x7,61,39,24,44x7,107,39,25}]
       panes:
         - 0:
           - venvact
@@ -71,6 +73,8 @@ windows:
         - 1:
           -
         - 2:
-          - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
+          - make run-service
         - 3:
+          - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
+        - 4:
           - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
