@@ -60,24 +60,20 @@ windows:
         - 3:
           - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
   - vertica_export_s:
-      layout: cc37,151x46,0,0[151x38,0,0{105x38,0,0,4,45x38,106,0,22},151x7,0,39{60x7,0,39,23,45x7,61,39,24,44x7,107,39,25}]
+      layout: beed,188x51,0,0[188x45,0,0{134x45,0,0,23,53x45,135,0,25},188x5,0,46{74x5,0,46,24,56x5,75,46,27,56x5,132,46,30}]
       panes:
         - 0:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
           - cd Dev/lca_vertica_export
         - 1:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - cd Dev/lca_vertica_export
           - docker exec -it vert-ex-postgres psql -d lca_vertica_export -U postgres
         - 2:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - cd Dev/lca_vertica_export
           - docker logs -f vert-ex-app
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - cd Dev/lca_vertica_export
           - docker logs -f vert-ex-tkq-worker
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - cd Dev/lca_vertica_export
           - docker logs -f vert-ex-tkq-scheduler
