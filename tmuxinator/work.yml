@@ -25,16 +25,18 @@ windows:
           # - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
   - payment_yookassa:
       root: ~/Dev/work/payment_yookassa
-      layout: c2ac,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x17,110,0,9,41x9,110,18,10,41x9,110,28,11]},151x8,0,38{40x8,0,38,12,39x8,41,38,19,35x8,81,38,13,34x8,117,38,14}]
+      layout: 7f56,188x51,0,0[188x45,0,0{128x45,0,0,2,59x45,129,0[59x22,129,0,11,59x11,129,23,12,59x10,129,35,13]},188x5,0,46{50x5,0,46,14,48x5,51,46,15,44x5,100,46,16,43x5,145,46,17}]
       panes:
         - 0:
+          - cd backend
           - venvact
-          - nvim .
+          - nvim ..
         - 1:
           - cd backend
         - 2:
           - cd bot
         - 3:
+          - cd backend
           - make psql
         - 4:
           - cd backend
