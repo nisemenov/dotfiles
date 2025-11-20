@@ -78,3 +78,18 @@ windows:
           - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 4:
           - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+  - alert_bot:
+      root: ~/Dev/work/lca/alert_bot
+      layout: cc37,151x46,0,0[151x38,0,0{105x38,0,0,4,45x38,106,0,22},151x7,0,39{60x7,0,39,23,45x7,61,39,24,44x7,107,39,25}]
+      panes:
+        - 0:
+          - venvact
+          - nvim .
+        - 1:
+          -
+        - 2:
+          - make run-service
+        - 3:
+          - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
+        - 4:
+          - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
