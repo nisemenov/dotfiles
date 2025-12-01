@@ -135,8 +135,20 @@ require("telescope").setup({
 })
 
 -- LSP
-local lspconfig = require("lspconfig")
-lspconfig.pyright.setup {}
+vim.lsp.config("pyright", {
+    on_attach = function(client, bufnr)
+        local opts = { noremap = true, silent = true, buffer = bufnr }
+
+        -- Hover
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        -- Definition (split)
+        vim.keymap.set("n", "gd", function()
+            vim.cmd("split")
+            vim.lsp.buf.definition()
+        end, opts)
+    end,
+})
+vim.lsp.enable("pyright")
 
 vim.diagnostic.config({
     virtual_text = {
@@ -149,11 +161,17 @@ vim.diagnostic.config({
     severity_sort = true, -- Сортировать по уровню серьезности
 })
 
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap=true, silent=true })
-vim.keymap.set("n", "gd", function()
-    vim.cmd("split")
-    vim.lsp.buf.definition()
-end, { noremap = true, silent = true })
+-- Автоматический запуск LSP
+-- (аналог .setup(), но через новый API)
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "python",
+--     callback = function(event)
+--         vim.lsp.start({
+--             name = "pyright",
+--             bufnr = event.buf,
+--         })
+--     end,
+-- })
 
 -- Autocomplete
 local cmp = require("cmp")
