@@ -6,6 +6,7 @@ alias opte='open -a 'textedit''
 alias p=python
 alias redock="~/Dev/docker_init.sh"
 alias venvact='source .venv/bin/activate'
+alias clck="clickhouse client --host 10.100.30.59 --port 9000 --user dev_user"
 
 # git
 autoload -Uz compinit && compinit

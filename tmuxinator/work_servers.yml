@@ -45,20 +45,27 @@ windows:
           - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
           - docker logs py-tkq-scheduler -f
   - sms_sender_s:
-      layout: b982,188x51,0,0[188x40,0,0{128x40,0,0,3,59x40,129,0,15},188x10,0,41{93x10,0,41,16,94x10,94,41,17}]
+      layout: 1d2d,188x51,0,0[188x40,0,0{124x40,0,0,2,63x40,125,0[63x20,125,0,28,63x19,125,21,29]},188x10,0,41{79x10,0,41,21,54x10,80,41,25,53x10,135,41,27}]
       panes:
         - 0:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
-          - cd sms_sender
+          - cd Dev/lca_sms_sender
         - 1:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
-          - cd sms_sender
-          - make psql-prod
+          - cd Dev/lca_sms_sender
+          - docker exec -it sms-sender-postgres psql -d lca_sms_sender -U postgres
         - 2:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
-          - docker logs lca_sms_sender-web-1 -f
+          - clck
         - 3:
-          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - cd Dev/lca_sms_sender
+          - docker logs sms-sender-app -f
+        - 4:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - docker logs sms-sender-tkq-worker -f
+        - 5:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - docker logs sms-sender-tkq-scheduler -f
   - vertica_export_s:
       layout: 6a8f,151x46,0,0[151x17,0,0{115x17,0,0,35,35x17,116,0,49},151x28,0,18{61x28,0,18[61x14,0,18,50,61x13,0,33,54],44x28,62,18[44x14,62,18,51,44x13,62,33,55],44x28,107,18[44x14,107,18,52,44x13,107,33,56]}]
       panes:
