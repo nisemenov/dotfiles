@@ -88,3 +88,21 @@ windows:
         - 4:
           -
           # - uv run taskiq scheduler app.tkq.schedulers:scheduler -fsd --skip-first-run
+  - marketplace:
+      root: ~/Dev/work/marketplace
+      layout: 0801,188x51,0,0[188x45,0,0{134x45,0,0,163,53x45,135,0[53x22,135,0,201,53x22,135,23,202]},188x5,0,46{94x5,0,46,199,93x5,95,46,200}]
+      panes:
+        - 0:
+          - cd backend
+          - venvact
+          - nvim ..
+        - 1:
+          - cd backend
+        - 2:
+          - docker exec -it postgres psql -d marketplace_db -U postgres
+        - 3:
+          - cd backend
+          - uv run python manage.py runserver 8004
+        - 4:
+          - cd frontend
+          - npm run dev
