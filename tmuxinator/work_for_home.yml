@@ -3,7 +3,7 @@ root: ~/
 
 windows:
   - email_sender:
-      root: ~/Dev/work/lca/lca_email_sender
+      root: ~/Dev/work/lca/email_sender
       layout: 83fe,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x22,110,0,10,41x14,110,23,11]},151x8,0,38{80x8,0,38,13,35x8,81,38,14,34x8,117,38,15}]
       panes:
         - 0:
@@ -20,8 +20,8 @@ windows:
         - 5:
           - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
   - payment_yookassa:
-      root: ~/Dev/work/lca/lca_payment_yookassa
-      layout: c2ac,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x17,110,0,9,41x9,110,18,10,41x9,110,28,11]},151x8,0,38{40x8,0,38,12,39x8,41,38,19,35x8,81,38,13,34x8,117,38,14}]
+      root: ~/Dev/work/lca/payment_yookassa
+      layout: 120b,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x22,110,0,11,41x14,110,23,13]},151x8,0,38{40x8,0,38,14,39x8,41,38,15,35x8,81,38,16,34x8,117,38,17}]
       panes:
         - 0:
           - cd backend
@@ -30,24 +30,22 @@ windows:
         - 1:
           - cd backend
         - 2:
-          - cd bot
-        - 3:
           - cd backend
           - make psql
-        - 4:
+        - 3:
           - cd backend
           - make run-server
-        - 5:
+        - 4:
           - cd backend
           - # make tkq-worker
-        - 6:
+        - 5:
           - cd backend
           - # make tkq-scheduler
-        - 7:
+        - 6:
           - cd frontend
           - npm run dev
   - sms_sender:
-      root: ~/Dev/work/lca/lca_sms_sender
+      root: ~/Dev/work/lca/sms_sender
       layout: 83fe,151x46,0,0[151x37,0,0{109x37,0,0,2,41x37,110,0[41x22,110,0,10,41x14,110,23,11]},151x8,0,38{80x8,0,38,13,35x8,81,38,14,34x8,117,38,15}]
       panes:
         - 0:
@@ -64,7 +62,7 @@ windows:
         - 5:
           - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
   - vertica_export:
-      root: ~/Dev/work/lca/lca_vertica_export
+      root: ~/Dev/work/lca/vertica_export
       layout: cc37,151x46,0,0[151x38,0,0{105x38,0,0,4,45x38,106,0,22},151x7,0,39{60x7,0,39,23,45x7,61,39,24,44x7,107,39,25}]
       panes:
         - 0:
@@ -93,3 +91,21 @@ windows:
           - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 4:
           - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+  - marketplace:
+      root: ~/Dev/work/lca/marketplace
+      layout: 2063,151x46,0,0[151x37,0,0{115x37,0,0,6,35x37,116,0[35x16,116,0,32,35x20,116,17,33]},151x8,0,38{75x8,0,38,34,75x8,76,38,35}]
+      panes:
+        - 0:
+          - cd backend
+          - venvact
+          - nvim ..
+        - 1:
+          - cd backend
+        - 2:
+          - docker exec -it postgres psql -d marketplace_db -U postgres
+        - 3:
+          - cd backend
+          - uv run python manage.py runserver 8004
+        - 4:
+          - cd frontend
+          # - npm run dev
