@@ -25,7 +25,7 @@ windows:
           # - uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
   - payment_yookassa:
       root: ~/Dev/work/payment_yookassa
-      layout: 7f56,188x51,0,0[188x45,0,0{128x45,0,0,2,59x45,129,0[59x22,129,0,11,59x11,129,23,12,59x10,129,35,13]},188x5,0,46{50x5,0,46,14,48x5,51,46,15,44x5,100,46,16,43x5,145,46,17}]
+      layout: 2b41,188x51,0,0[188x45,0,0{128x45,0,0,2,59x45,129,0[59x24,129,0,12,59x20,129,25,14]},188x5,0,46{50x5,0,46,15,48x5,51,46,16,44x5,100,46,17,43x5,145,46,18}]
       panes:
         - 0:
           - cd backend
@@ -34,20 +34,18 @@ windows:
         - 1:
           - cd backend
         - 2:
-          - cd bot
-        - 3:
           - cd backend
           - make psql
-        - 4:
+        - 3:
           - cd backend
           - make run-server
-        - 5:
+        - 4:
           - cd backend
           # - make tkq-worker
-        - 6:
+        - 5:
           - cd backend
           # - make tkq-scheduler
-        - 7:
+        - 6:
           - cd frontend
           - npm run dev
   - sms_sender:

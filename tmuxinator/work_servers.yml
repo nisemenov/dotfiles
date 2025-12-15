@@ -55,7 +55,8 @@ windows:
           - cd Dev/lca_sms_sender
           - docker exec -it sms-sender-postgres psql -d lca_sms_sender -U postgres
         - 2:
-          - clck
+          # - clck
+          - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
           - cd Dev/lca_sms_sender
