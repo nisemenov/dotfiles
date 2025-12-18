@@ -14,7 +14,7 @@ windows:
         - 2:
           - make psql-local
         - 3:
-          - make run-server
+          # - make run-server
         - 4:
           - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 5:
@@ -34,7 +34,7 @@ windows:
           - make psql
         - 3:
           - cd backend
-          - make run-server
+          # - make run-server
         - 4:
           - cd backend
           - # make tkq-worker
@@ -56,7 +56,7 @@ windows:
         - 2:
           - make psql-local
         - 3:
-          - make run-server
+          # - make run-server
         - 4:
           - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 5:
@@ -71,7 +71,7 @@ windows:
         - 1:
           -
         - 2:
-          - make run-service
+          # - make run-service
         - 3:
           - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 4:
@@ -86,7 +86,7 @@ windows:
         - 1:
           -
         - 2:
-          - make run-service
+          # - make run-service
         - 3:
           - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 4:
@@ -105,7 +105,25 @@ windows:
           - docker exec -it postgres psql -d marketplace_db -U postgres
         - 3:
           - cd backend
-          - uv run python manage.py runserver 8004
+          # - uv run python manage.py runserver 8004
+        - 4:
+          - cd frontend
+          # - npm run dev
+  - CourseEDX:
+      root: ~/Dev/work/lca/CourseEDX
+      layout: 90e0,151x46,0,0[151x38,0,0{105x38,0,0,89,45x38,106,0[45x19,106,0,119,45x18,106,20,120]},151x7,0,39{75x7,0,39,117,75x7,76,39,118}]
+      panes:
+        - 0:
+          - cd course_service
+          - venvact
+          - nvim ..
+        - 1:
+          - cd course_service
+        - 2:
+          - docker exec -it postgres psql -d courses_db -U postgres
+        - 3:
+          - cd course_service
+          # - uv run python manage.py runserver 8004
         - 4:
           - cd frontend
           # - npm run dev
