@@ -3,7 +3,7 @@ root: ~/
 
 windows:
   - email_sender_s:
-      layout: 1d2d,188x51,0,0[188x40,0,0{124x40,0,0,2,63x40,125,0[63x20,125,0,28,63x19,125,21,29]},188x10,0,41{79x10,0,41,21,54x10,80,41,25,53x10,135,41,27}]
+      layout: 17d4,151x46,0,0[151x37,0,0{105x37,0,0,178,45x37,106,0[45x17,106,0,182,45x19,106,18,183]},151x8,0,38{75x8,0,38,184,75x8,76,38,205}]
       panes:
         - 0:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
@@ -21,11 +21,8 @@ windows:
         - 4:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
           - docker logs e-sender-tkq-worker -f
-        - 5:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
-          - docker logs e-sender-tkq-scheduler -f
   - payment_yookassa_s:
-      layout: 1d2d,188x51,0,0[188x40,0,0{124x40,0,0,2,63x40,125,0[63x20,125,0,28,63x19,125,21,29]},188x10,0,41{79x10,0,41,21,54x10,80,41,25,53x10,135,41,27}]
+      layout: 17d4,151x46,0,0[151x37,0,0{105x37,0,0,178,45x37,106,0[45x17,106,0,182,45x19,106,18,183]},151x8,0,38{75x8,0,38,184,75x8,76,38,205}]
       panes:
         - 0:
           - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
@@ -41,11 +38,8 @@ windows:
         - 4:
           - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
           - docker logs py-tkq-worker -f
-        - 5:
-          - ssh -i ~/.ssh/id_ed25519_servers user@178.250.155.131 -p 8022
-          - docker logs py-tkq-scheduler -f
   - sms_sender_s:
-      layout: 1d2d,188x51,0,0[188x40,0,0{124x40,0,0,2,63x40,125,0[63x20,125,0,28,63x19,125,21,29]},188x10,0,41{79x10,0,41,21,54x10,80,41,25,53x10,135,41,27}]
+      layout: 17d4,151x46,0,0[151x37,0,0{105x37,0,0,178,45x37,106,0[45x17,106,0,182,45x19,106,18,183]},151x8,0,38{75x8,0,38,184,75x8,76,38,205}]
       panes:
         - 0:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
@@ -64,11 +58,8 @@ windows:
         - 4:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
           - docker logs sms-sender-tkq-worker -f
-        - 5:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
-          - docker logs sms-sender-tkq-scheduler -f
   - vertica_export_s:
-      layout: 6a8f,151x46,0,0[151x17,0,0{115x17,0,0,35,35x17,116,0,49},151x28,0,18{61x28,0,18[61x14,0,18,50,61x13,0,33,54],44x28,62,18[44x14,62,18,51,44x13,62,33,55],44x28,107,18[44x14,107,18,52,44x13,107,33,56]}]
+      layout: 7ab5,151x46,0,0[151x17,0,0{115x17,0,0,34,35x17,116,0,47},151x28,0,18{66x28,0,18[66x14,0,18,48,66x13,0,33,49],84x28,67,18[84x14,67,18,50,84x13,67,33,51]}]
       panes:
         - 0:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
@@ -88,9 +79,3 @@ windows:
         - 5:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
           - docker logs -f alert-bot-tkq-worker
-        - 6:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - docker logs -f vert-ex-tkq-scheduler
-        - 7:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - docker logs -f alert-bot-tkq-scheduler

@@ -8,6 +8,7 @@
     cp = cherry-pick
     cpn = "!f() { git cherry-pick -n $1 && git commit -m \"cp [$1] $(git log --format=%B -n 1 $1 | head -n 1)\"; }; f"
     fe = fetch -v
+	mt = mergetool
 [user]
     name = Nikita Semenov
     email = nasemenov726@gmail.com
