@@ -134,7 +134,7 @@ require("telescope").setup({
   },
 })
 
--- LSP
+-- LSP Pyright
 vim.lsp.config("pyright", {
     on_attach = function(client, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -173,6 +173,32 @@ vim.diagnostic.config({
 --     end,
 -- })
 
+-- LSP GO
+vim.lsp.config("gopls", {
+    settings = {
+        gopls = {
+            gofumpt = true,
+            staticcheck = true,
+        },
+    },
+    on_attach = function(client, bufnr)
+        local opts = { noremap = true, silent = true, buffer = bufnr }
+
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "gd", function()
+            vim.cmd("split")
+            vim.lsp.buf.definition()
+        end, opts)
+    end,
+})
+vim.lsp.enable("gopls")
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+        vim.lsp.buf.format({ async = false })
+    end,
+})
+
 -- Autocomplete
 local cmp = require("cmp")
 cmp.setup({
@@ -191,7 +217,10 @@ cmp.setup({
 
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "python", "lua", "json", "yaml", "html", "htmldjango" },
+    ensure_installed = {
+        "python", "lua", "json", "yaml", "html", "htmldjango",
+        "go", "gomod", "gowork", "gosum"
+    },
     highlight = {
         enable = true,
     },
