@@ -58,7 +58,7 @@ windows:
         - 4:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
           - docker logs sms-sender-tkq-worker -f
-  - vertica_export_s:
+  - 121_server:
       layout: 7ab5,151x46,0,0[151x17,0,0{115x17,0,0,34,35x17,116,0,47},151x28,0,18{66x28,0,18[66x14,0,18,48,66x13,0,33,49],84x28,67,18[84x14,67,18,50,84x13,67,33,51]}]
       panes:
         - 0:
