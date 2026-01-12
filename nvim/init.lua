@@ -1,4 +1,6 @@
 -- basic settings
+vim.g.mapleader = " "
+
 vim.opt.mouse = "c"
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -41,10 +43,10 @@ vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = t
 
 -- Keymaps for programming languages
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "python",
+    pattern = {  "python", "go" },
     callback = function()
-        vim.opt.colorcolumn = "120"
-    end
+        vim.opt_local.colorcolumn = "120"
+    end,
 })
 
 -- Plugin manager
@@ -122,7 +124,6 @@ require("lazy").setup({
     }
 })
 require("telescope").load_extension("fzf")
-
 require("telescope").setup({
   defaults = {
     mappings = {
@@ -138,7 +139,6 @@ require("telescope").setup({
 vim.lsp.config("pyright", {
     on_attach = function(client, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
-
         -- Hover
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         -- Definition (split)
@@ -150,29 +150,6 @@ vim.lsp.config("pyright", {
 })
 vim.lsp.enable("pyright")
 
-vim.diagnostic.config({
-    virtual_text = {
-        prefix = "●", -- Символ перед текстом ошибки
-        source = "always", -- Показывать источник ошибки (например, pyright)
-    },
-    signs = true, -- Включить знаки слева (например, "E")
-    underline = true, -- Подчеркивать проблемный код
-    update_in_insert = false, -- Не обновлять диагностику во время ввода
-    severity_sort = true, -- Сортировать по уровню серьезности
-})
-
--- Автоматический запуск LSP
--- (аналог .setup(), но через новый API)
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = "python",
---     callback = function(event)
---         vim.lsp.start({
---             name = "pyright",
---             bufnr = event.buf,
---         })
---     end,
--- })
-
 -- LSP GO
 vim.lsp.config("gopls", {
     settings = {
@@ -183,20 +160,34 @@ vim.lsp.config("gopls", {
     },
     on_attach = function(client, bufnr)
         local opts = { noremap = true, silent = true, buffer = bufnr }
-
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "gd", function()
             vim.cmd("split")
             vim.lsp.buf.definition()
         end, opts)
+        vim.keymap.set("n", "<leader>gf", function() -- Go format
+            vim.lsp.buf.format({ async = false })
+        end, opts)
     end,
 })
 vim.lsp.enable("gopls")
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.go",
-    callback = function()
-        vim.lsp.buf.format({ async = false })
-    end,
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     pattern = "*.go",
+--     callback = function()
+--         vim.lsp.buf.format({ async = false })
+--     end,
+-- })
+
+-- LSP common
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = "●", -- Символ перед текстом ошибки
+        source = "always", -- Показывать источник ошибки (например, pyright)
+    },
+    signs = true, -- Включить знаки слева (например, "E")
+    underline = true, -- Подчеркивать проблемный код
+    update_in_insert = false, -- Не обновлять диагностику во время ввода
+    severity_sort = true, -- Сортировать по уровню серьезности
 })
 
 -- Autocomplete
