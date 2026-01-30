@@ -2,6 +2,16 @@ name: work_edx
 root: ~/
 
 windows:
+  - marketplace:
+      root: ~/Dev/work/lca/marketplace
+      layout: 8102,151x46,0,0[151x38,0,0{113x38,0,0,89,37x38,114,0,94},151x7,0,39,90]
+      panes:
+        - 0:
+          - cd backend
+          - venvact
+          - nvim ..
+        - 1:
+        - 2:
   - course_edx:
       root: ~/Dev/work/lca/marketplace/course_edx
       layout: 8102,151x46,0,0[151x38,0,0{113x38,0,0,89,37x38,114,0,94},151x7,0,39,90]
@@ -11,7 +21,6 @@ windows:
           - nvim .
         - 1:
         - 2:
-          - uv run uvicorn app.main:app --port 8003 --reload
   - audio_edx:
       root: ~/Dev/work/lca/marketplace/audio_edx
       layout: 8102,151x46,0,0[151x38,0,0{113x38,0,0,89,37x38,114,0,94},151x7,0,39,90]
@@ -21,22 +30,16 @@ windows:
           - nvim .
         - 1:
         - 2:
-          - uv run uvicorn app.main:app --port 8004 --reload
-  - marketplace:
-      root: ~/Dev/work/lca/marketplace
-      layout: 2063,151x46,0,0[151x37,0,0{115x37,0,0,6,35x37,116,0[35x16,116,0,32,35x20,116,17,33]},151x8,0,38{75x8,0,38,34,75x8,76,38,35}]
+  - server_test:
+      layout: f8bf,151x46,0,0[151x38,0,0{110x38,0,0,57,40x38,111,0,88},151x7,0,39{75x7,0,39,86,75x7,76,39,87}]
       panes:
         - 0:
-          - cd backend
-          - venvact
-          - nvim ..
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
         - 1:
-          - cd backend
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
         - 2:
-          - docker exec -it postgres psql -d marketplace_db -U postgres
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
+          - docker logs -f edx-backend
         - 3:
-          - cd backend
-          # - uv run python manage.py runserver 8004
-        - 4:
-          - cd frontend
-          # - npm run dev
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
+          - docker logs -f edx-backend-course
