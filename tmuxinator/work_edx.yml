@@ -31,7 +31,7 @@ windows:
         - 1:
         - 2:
   - server_test:
-      layout: f8bf,151x46,0,0[151x38,0,0{110x38,0,0,57,40x38,111,0,88},151x7,0,39{75x7,0,39,86,75x7,76,39,87}]
+      layout: de22,188x51,0,0[188x41,0,0{129x41,0,0,172,58x41,130,0[58x20,130,0,179,58x20,130,21,184]},188x9,0,42{64x9,0,42,180,66x9,65,42,181,56x9,132,42,183}]
       panes:
         - 0:
           - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
@@ -39,7 +39,12 @@ windows:
           - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
         - 2:
           - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
-          - docker logs -f edx-backend
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
+          - docker logs -f edx-backend
+        - 4:
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
           - docker logs -f edx-backend-course
+        - 5:
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
+          - docker logs -f edx-backend-audio
