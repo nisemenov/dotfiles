@@ -101,3 +101,13 @@ windows:
           - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 4:
           - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
+  - etl_service:
+      root: ~/Dev/work/lca/etl_service
+      layout: 2b98,151x46,0,0{104x46,0,0,6,46x46,105,0[46x33,105,0,31,46x12,105,34,81]}
+      panes:
+        - 0:
+          - nvim .
+        - 1:
+          -
+        - 2:
+          -
