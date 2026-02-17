@@ -37,6 +37,7 @@ windows:
           - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
         - 1:
           - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
+          - docker exec -it edx-postgres psql -U postgres
         - 2:
           - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
         - 3:
