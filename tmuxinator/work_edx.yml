@@ -49,3 +49,22 @@ windows:
         - 5:
           - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9622
           - docker logs -f edx-backend-audio
+  - server_prod:
+      layout: de22,188x51,0,0[188x41,0,0{129x41,0,0,172,58x41,130,0[58x20,130,0,179,58x20,130,21,184]},188x9,0,42{64x9,0,42,180,66x9,65,42,181,56x9,132,42,183}]
+      panes:
+        - 0:
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9522
+        - 1:
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9522
+          - docker exec -it edx-postgres psql -U postgres
+        - 2:
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9522
+        - 3:
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9522
+          - docker logs -f edx-backend
+        - 4:
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9522
+          - docker logs -f edx-backend-course
+        - 5:
+          - ssh -i ~/.ssh/id_ed25519_servers user@185.174.164.151 -p 9522
+          - docker logs -f edx-backend-audio
