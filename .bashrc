@@ -98,7 +98,7 @@ alias n='nvim'
 alias p='python'
 alias venvact='source .venv/bin/activate'
 
-alias obsidian='~/obsidian_weekly_notes_wsl.sh'
+alias obs='~/obsidian_weekly_notes_wsl.sh'
 
 alias redock="~/Dev/docker/docker_init.sh"
 alias etmux="tmux select-layout '96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]'"
