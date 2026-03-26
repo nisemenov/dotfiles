@@ -168,6 +168,15 @@ vim.lsp.config("gopls", {
         vim.keymap.set("n", "<leader>gf", function() -- Go format
             vim.lsp.buf.format({ async = false })
         end, opts)
+        vim.keymap.set("n", "<leader>t", function()
+            local test_name = vim.fn.expand("<cword>")
+            local dir = vim.fn.expand("%:p:h")
+            vim.cmd("!cd " .. dir .. " && go test -run " .. test_name .. " -v")
+        end)
+        vim.keymap.set("n", "<leader>tf", function()
+            local dir = vim.fn.expand("%:p:h")
+            vim.cmd("!cd " .. dir .. " && go test -v")
+        end)
     end,
 })
 vim.lsp.enable("gopls")
