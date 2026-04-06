@@ -59,23 +59,26 @@ windows:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
           - docker logs sms-sender-tkq-worker -f
   - 121_server:
-      layout: 7ab5,151x46,0,0[151x17,0,0{115x17,0,0,34,35x17,116,0,47},151x28,0,18{66x28,0,18[66x14,0,18,48,66x13,0,33,49],84x28,67,18[84x14,67,18,50,84x13,67,33,51]}]
+      layout: 1899,188x51,0,0[188x20,0,0{67x20,0,0,61,66x20,68,0,80,53x20,135,0,74},188x30,0,21{85x30,0,21[85x16,0,21,75,85x13,0,38,76],102x30,86,21[102x16,86,21,77,102x13,86,38,78]}]
       panes:
         - 0:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
           - cd Dev
         - 1:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - sqlite3 Dev/lca_alert_bot/db/bot.db
+          - cd Dev
         - 2:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
           - docker logs -f vert-ex-app
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - docker logs -f alert-bot-app
+          - docker logs -f etl_service
         - 4:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - docker logs -f vert-ex-tkq-worker
+          - docker logs -f alert-bot-app
         - 5:
+          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - docker logs -f vert-ex-tkq-worker
+        - 6:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
           - docker logs -f alert-bot-tkq-worker

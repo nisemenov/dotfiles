@@ -146,6 +146,13 @@ vim.lsp.config("pyright", {
             vim.cmd("split")
             vim.lsp.buf.definition()
         end, opts)
+        -- run particular test
+        vim.keymap.set("n", "<leader>t", function()
+            local test_name = vim.fn.expand("<cword>")
+            local file = vim.fn.expand("%:p")
+            local dir = vim.fn.expand("%:p:h")
+            vim.cmd("!cd " .. dir .. " && uv run pytest " .. file .. "::" .. test_name)
+        end)
     end,
 })
 vim.lsp.enable("pyright")
@@ -165,14 +172,17 @@ vim.lsp.config("gopls", {
             vim.cmd("split")
             vim.lsp.buf.definition()
         end, opts)
-        vim.keymap.set("n", "<leader>gf", function() -- Go format
+        -- Go format
+        vim.keymap.set("n", "<leader>gf", function()
             vim.lsp.buf.format({ async = false })
         end, opts)
+        -- Go test particular test
         vim.keymap.set("n", "<leader>t", function()
             local test_name = vim.fn.expand("<cword>")
             local dir = vim.fn.expand("%:p:h")
             vim.cmd("!cd " .. dir .. " && go test -run " .. test_name .. " -v")
         end)
+        -- Go test whole package
         vim.keymap.set("n", "<leader>tf", function()
             local dir = vim.fn.expand("%:p:h")
             vim.cmd("!cd " .. dir .. " && go test -v")
