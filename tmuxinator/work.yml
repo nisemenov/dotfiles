@@ -111,3 +111,13 @@ windows:
           -
         - 2:
           -
+  - ch-exporter:
+      root: ~/Dev/work/lca/ch-exporter
+      layout: 2b98,151x46,0,0{104x46,0,0,6,46x46,105,0[46x33,105,0,31,46x12,105,34,81]}
+      panes:
+        - 0:
+          - nvim .
+        - 1:
+          -
+        - 2:
+          -
