@@ -69,7 +69,7 @@ windows:
           - cd Dev
         - 2:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - docker logs -f vert-ex-app
+          - docker logs -f ch-exporter
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
           - docker logs -f etl_service

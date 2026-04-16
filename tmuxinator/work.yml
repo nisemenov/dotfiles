@@ -2,6 +2,16 @@ name: work
 root: ~/
 
 windows:
+  - etl-service:
+      root: ~/Dev/work/lca/etl-service
+      layout: 2b98,151x46,0,0{104x46,0,0,6,46x46,105,0[46x33,105,0,31,46x12,105,34,81]}
+      panes:
+        - 0:
+          - nvim .
+        - 1:
+          -
+        - 2:
+          -
   - email_sender:
       root: ~/Dev/work/lca_email_sender
       layout: 96a5,188x51,0,0[188x45,0,0{128x45,0,0,1,59x45,129,0[59x22,129,0,6,59x11,129,23,7,59x10,129,35,8]},188x5,0,46{93x5,0,46,9,47x5,94,46,10,46x5,142,46,24}]
@@ -101,16 +111,6 @@ windows:
           - # uv run taskiq worker app.tkq.workers:mk_broker -fsd
         - 4:
           - # uv run taskiq scheduler app.tkq.schedulers:mk_scheduler -fsd --skip-first-run
-  - etl_service:
-      root: ~/Dev/work/lca/etl_service
-      layout: 2b98,151x46,0,0{104x46,0,0,6,46x46,105,0[46x33,105,0,31,46x12,105,34,81]}
-      panes:
-        - 0:
-          - nvim .
-        - 1:
-          -
-        - 2:
-          -
   - ch-exporter:
       root: ~/Dev/work/lca/ch-exporter
       layout: 2b98,151x46,0,0{104x46,0,0,6,46x46,105,0[46x33,105,0,31,46x12,105,34,81]}
