@@ -72,7 +72,7 @@ windows:
           - docker logs -f ch-exporter
         - 3:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - docker logs -f etl_service
+          - docker logs -f etl-service
         - 4:
           - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
           - docker logs -f alert-bot-app
