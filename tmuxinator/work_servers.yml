@@ -6,20 +6,20 @@ windows:
       layout: 17d4,151x46,0,0[151x37,0,0{105x37,0,0,178,45x37,106,0[45x17,106,0,182,45x19,106,18,183]},151x8,0,38{75x8,0,38,184,75x8,76,38,205}]
       panes:
         - 0:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.64 -p 22
           - cd Dev/lca_email_sender
         - 1:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.64 -p 22
           - cd Dev/lca_email_sender
           - make psql-prod
         - 2:
           - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
         - 3:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.64 -p 22
           - cd Dev/lca_email_sender
           - docker logs e-sender-app -f
         - 4:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.64 -p 22
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.64 -p 22
           - docker logs e-sender-tkq-worker -f
   - payment_yookassa_s:
       layout: 17d4,151x46,0,0[151x37,0,0{105x37,0,0,178,45x37,106,0[45x17,106,0,182,45x19,106,18,183]},151x8,0,38{75x8,0,38,184,75x8,76,38,205}]
@@ -42,43 +42,43 @@ windows:
       layout: 17d4,151x46,0,0[151x37,0,0{105x37,0,0,178,45x37,106,0[45x17,106,0,182,45x19,106,18,183]},151x8,0,38{75x8,0,38,184,75x8,76,38,205}]
       panes:
         - 0:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.120
           - cd Dev/lca_sms_sender
         - 1:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.120
           - cd Dev/lca_sms_sender
           - docker exec -it sms-sender-postgres psql -d lca_sms_sender -U postgres
         - 2:
           # - clck
           - /opt/vertica/bin/vsql -h 10.100.30.33 -p 5433 -d lca_dwh -U dev_user
         - 3:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.120
           - cd Dev/lca_sms_sender
           - docker logs sms-sender-app -f
         - 4:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.120
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.120
           - docker logs sms-sender-tkq-worker -f
   - 121_server:
       layout: 1899,188x51,0,0[188x20,0,0{67x20,0,0,61,66x20,68,0,80,53x20,135,0,74},188x30,0,21{85x30,0,21[85x16,0,21,75,85x13,0,38,76],102x30,86,21[102x16,86,21,77,102x13,86,38,78]}]
       panes:
         - 0:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.121
           - cd Dev
         - 1:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.121
           - cd Dev
         - 2:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.121
           - docker logs -f ch-exporter
         - 3:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
-          - docker logs -f etl_service
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.121
+          - docker logs -f etl-service
         - 4:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.121
           - docker logs -f alert-bot-app
         - 5:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.121
           - docker logs -f vert-ex-tkq-worker
         - 6:
-          - ssh -i ~/.ssh/id_ed25519_servers user@10.100.30.121
+          - ssh -i ~/.ssh/id_ed25519_servers user@192.168.190.121
           - docker logs -f alert-bot-tkq-worker
