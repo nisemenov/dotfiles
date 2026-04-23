@@ -1,49 +1,57 @@
-name: home 
+name: home
 root: ~/
 
 windows:
-  - django:
-      root: ~/Dev/pets/yourmirror/
-      layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
+  - hiddify:
+      root: ~/Dev/contrib/hiddify-core
+      layout: 4149,151x46,0,0{99x46,0,0,1,51x46,100,0[51x23,100,0,2,51x22,100,24,6]}
       panes:
         - 1:
-          - venvact
-          - n backend
-        - 2:
-          - cd backend
-        - 3:
-          - cd backend
-          - make run-server
-        - 4:
-          - cd backend
-  - link_preview:
-      root: ~/Dev/pets/yourmirror/
-      layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
-      panes:
-        - 1:
-          - venvact
-          - n services/link_preview
-        - 2:
-          - cd services/link_preview
-        - 3:
-          - cd services/link_preview
-          - make run-server
-        - 4:
-          - cd services/link_preview
-  - root:
-      root: ~/Dev/pets/yourmirror/
-      layout: 1311,151x46,0,0[151x37,0,0{99x37,0,0,3,51x37,100,0[51x14,100,0,10,51x13,100,15,15,51x8,100,29,11]},151x8,0,38{74x8,0,38,12,76x8,75,38,13}]
-      panes:
-        - 1:
-          - venvact
           - n .
         - 2:
         - 3:
-          - cd backend
-          - make celery-start
-        - 4:
-          - make tailwind-start
-        - 5:
-          - make psql
-        - 6:
-          - make minio
+  # - django:
+  #     root: ~/Dev/pets/yourmirror/
+  #     layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
+  #     panes:
+  #       - 1:
+  #         - venvact
+  #         - n backend
+  #       - 2:
+  #         - cd backend
+  #       - 3:
+  #         - cd backend
+  #         - make run-server
+  #       - 4:
+  #         - cd backend
+  # - link_preview:
+  #     root: ~/Dev/pets/yourmirror/
+  #     layout: 41cd,151x46,0,0[151x37,0,0{99x37,0,0,1,51x37,100,0,4},151x8,0,38{74x8,0,38,5,76x8,75,38,6}]
+  #     panes:
+  #       - 1:
+  #         - venvact
+  #         - n services/link_preview
+  #       - 2:
+  #         - cd services/link_preview
+  #       - 3:
+  #         - cd services/link_preview
+  #         - make run-server
+  #       - 4:
+  #         - cd services/link_preview
+  # - root:
+  #     root: ~/Dev/pets/yourmirror/
+  #     layout: 1311,151x46,0,0[151x37,0,0{99x37,0,0,3,51x37,100,0[51x14,100,0,10,51x13,100,15,15,51x8,100,29,11]},151x8,0,38{74x8,0,38,12,76x8,75,38,13}]
+  #     panes:
+  #       - 1:
+  #         - venvact
+  #         - n .
+  #       - 2:
+  #       - 3:
+  #         - cd backend
+  #         - make celery-start
+  #       - 4:
+  #         - make tailwind-start
+  #       - 5:
+  #         - make psql
+  #       - 6:
+  #         - make minio

@@ -43,9 +43,10 @@ vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = t
 
 -- Keymaps for programming languages
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = {  "python", "go" },
+    pattern = { "python", "go", "lua", "json", "yaml", "html", "htmldjango" },
     callback = function()
         vim.opt_local.colorcolumn = "120"
+        vim.treesitter.start()
     end,
 })
 
@@ -226,14 +227,12 @@ cmp.setup({
 })
 
 -- Treesitter
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-        "python", "lua", "json", "yaml", "html", "htmldjango",
-        "go", "gomod", "gowork", "gosum"
-    },
-    highlight = {
-        enable = true,
-    },
+require('nvim-treesitter').setup {
+  install_dir = vim.fn.stdpath('data') .. '/site'
+}
+
+require('nvim-treesitter').install {
+  'python', 'lua', 'json', 'yaml', 'html', 'go', 'gomod', 'gowork', 'gosum'
 }
 
 require('nvim-ts-autotag').setup({
